@@ -114,57 +114,57 @@ export default function Header() {
       <div className="w-full px-6 md:px-8 h-20 flex items-center justify-between max-w-[1920px] mx-auto">
         
         {/* Left: Logo */}
-        <div className="flex-1 flex justify-start">
+        <div className="flex-1 flex justify-start min-w-max pr-2">
           <Link href="/" className="flex items-center gap-2 text-emerald-700 font-extrabold text-2xl tracking-tight hover:opacity-90 transition-opacity">
-            <Leaf size={28} className="text-emerald-600" />
-            <span className="notranslate">CivicVision</span>
+            <Leaf size={28} className="text-emerald-600 shrink-0" />
+            <span className="notranslate whitespace-nowrap">CivicVision</span>
           </Link>
         </div>
 
-        {/* Center: Navigation (Equal Spacing) */}
-        <nav className="flex-none flex items-center justify-center gap-10">
-          <Link href="/" className="text-slate-600 font-bold hover:text-emerald-700 transition-colors text-[15px] notranslate">
+        {/* Center: Navigation (Responsive Spacing) */}
+        <nav className="flex-none flex items-center justify-center gap-3 md:gap-4 lg:gap-6 xl:gap-8">
+          <Link href="/" className="whitespace-nowrap text-slate-600 font-bold hover:text-emerald-700 transition-colors text-[14px] lg:text-[15px] notranslate">
             {lang === 'hi' ? 'होम' : 'Home'}
           </Link>
-          <Link href="/dashboard" className="text-slate-600 font-bold hover:text-emerald-700 transition-colors text-[15px]">
+          <Link href="/dashboard" className="whitespace-nowrap text-slate-600 font-bold hover:text-emerald-700 transition-colors text-[14px] lg:text-[15px]">
             My Reports
           </Link>
-          <Link href="/support" className="text-slate-600 font-bold hover:text-emerald-700 transition-colors text-[15px]">
+          <Link href="/support" className="whitespace-nowrap text-slate-600 font-bold hover:text-emerald-700 transition-colors text-[14px] lg:text-[15px]">
             Support
           </Link>
           {role === 'admin' || role === 'officer' ? (
-             <Link href="/admin" className="text-blue-600 font-bold hover:text-blue-800 transition-colors text-[15px]">
+             <Link href="/admin" className="whitespace-nowrap text-blue-600 font-bold hover:text-blue-800 transition-colors text-[14px] lg:text-[15px]">
                Municipal Dashboard
              </Link>
           ) : null}
           <Link 
             href="/report"
-            className="bg-[#10703c] text-white px-6 py-2.5 rounded-xl font-bold hover:bg-emerald-800 transition-colors shadow-md shadow-emerald-900/10 text-[15px]"
+            className="whitespace-nowrap bg-[#10703c] text-white px-4 py-2 lg:px-5 lg:py-2.5 rounded-xl font-bold hover:bg-emerald-800 transition-colors shadow-md shadow-emerald-900/10 text-[14px] lg:text-[15px]"
           >
             Report Waste
           </Link>
         </nav>
 
         {/* Right: Rewards, Auth & Language */}
-        <div className="flex-1 flex items-center justify-end gap-6">
+        <div className="flex-1 flex items-center justify-end gap-3 lg:gap-5 pl-2 min-w-max">
           
           {/* Rewards Section */}
-          <div className="flex items-center gap-5 mr-2">
+          <div className="flex items-center gap-3 lg:gap-4">
             <button 
               onClick={() => setIsReferModalOpen(true)} 
-              className="flex items-center gap-1.5 text-slate-600 font-bold hover:text-orange-500 transition-colors text-[15px]"
+              className="whitespace-nowrap flex items-center gap-1.5 text-slate-600 font-bold hover:text-orange-500 transition-colors text-[14px] lg:text-[15px]"
             >
-              <Gift size={18} className="text-orange-500" />
+              <Gift size={18} className="text-orange-500 shrink-0" />
               Refer & Earn
             </button>
-            <Link href="/points" className="flex items-center gap-1.5 text-slate-600 font-bold hover:text-yellow-500 transition-colors text-[15px]">
-              <Coins size={18} className="text-yellow-500" />
+            <Link href="/points" className="whitespace-nowrap flex items-center gap-1.5 text-slate-600 font-bold hover:text-yellow-500 transition-colors text-[14px] lg:text-[15px]">
+              <Coins size={18} className="text-yellow-500 shrink-0" />
               My Points
             </Link>
             
             {user && (
-              <Link href="/settings" className="flex items-center text-slate-600 font-bold hover:text-emerald-600 transition-colors ml-2 border-l border-slate-200 pl-4" title="Settings">
-                <Settings size={20} />
+              <Link href="/settings" className="flex items-center text-slate-600 font-bold hover:text-emerald-600 transition-colors ml-1 lg:ml-2 border-l border-slate-200 pl-3 lg:pl-4" title="Settings">
+                <Settings size={20} className="shrink-0" />
               </Link>
             )}
           </div>
@@ -172,7 +172,7 @@ export default function Header() {
           {/* Language Toggle Switch */}
           <button 
             onClick={toggleLanguage}
-            className="relative w-[72px] h-[34px] bg-slate-200 border-2 border-emerald-500 rounded-full flex items-center cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1 notranslate"
+            className="relative w-[72px] h-[34px] bg-slate-200 border-2 border-emerald-500 rounded-full flex items-center cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1 notranslate shrink-0"
             aria-label="Toggle language"
           >
              {/* Background text */}
@@ -188,7 +188,7 @@ export default function Header() {
           </button>
 
           {/* User Auth Buttons */}
-          <div className="border-l border-slate-200 h-8 flex items-center pl-6">
+          <div className="border-l border-slate-200 h-8 flex items-center pl-4 lg:pl-6 shrink-0">
             {user ? (
                <div className="flex items-center gap-4">
                  {/* Avatar with dropdown */}
@@ -207,7 +207,7 @@ export default function Header() {
                        </div>
                        <button 
                          onClick={handleLogout} 
-                         className="w-full flex items-center gap-2 px-2 py-1.5 text-sm text-red-500 hover:bg-red-50 rounded-lg font-medium transition-colors"
+                         className="whitespace-nowrap w-full flex items-center gap-2 px-2 py-1.5 text-sm text-red-500 hover:bg-red-50 rounded-lg font-medium transition-colors"
                        >
                          <LogOut size={15} /> Sign Out
                        </button>
@@ -216,11 +216,11 @@ export default function Header() {
                  </div>
                </div>
              ) : (
-               <div className="flex items-center gap-3">
-                 <Link href="/auth/login" className="text-slate-600 font-bold hover:text-emerald-700 px-3 py-2 transition-colors text-[15px]">
+               <div className="flex items-center gap-2 lg:gap-3">
+                 <Link href="/auth/login" className="whitespace-nowrap text-slate-600 font-bold hover:text-emerald-700 px-2 lg:px-3 py-2 transition-colors text-[14px] lg:text-[15px]">
                    Login
                  </Link>
-                 <Link href="/auth/signup" className="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-slate-800 transition-colors text-[15px] shadow-sm shadow-slate-900/10">
+                 <Link href="/auth/signup" className="whitespace-nowrap bg-slate-900 text-white px-4 py-2 lg:px-5 lg:py-2.5 rounded-xl font-bold hover:bg-slate-800 transition-colors text-[14px] lg:text-[15px] shadow-sm shadow-slate-900/10">
                    Sign Up
                  </Link>
                </div>

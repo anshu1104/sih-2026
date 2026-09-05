@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api import detect
+from api import detect, settings
 
 app = FastAPI(title="CivicVision AI Backend", version="1.0.0")
 
@@ -15,6 +15,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(detect.router, prefix="/api", tags=["Detection"])
+app.include_router(settings.router, prefix="/api", tags=["Settings"])
 
 @app.get("/")
 def read_root():
