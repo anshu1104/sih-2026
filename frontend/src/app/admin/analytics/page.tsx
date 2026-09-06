@@ -75,6 +75,12 @@ export default function AnalyticsPage() {
   let resolvedWithTimeCount = 0;
 
   const locationStats = new Map();
+  const segregationStats = new Map([
+    ['Wet Waste', 0],
+    ['Dry Waste', 0],
+    ['Manual Verification', 0],
+    ['Unknown', 0]
+  ]);
   const wasteStats = new Map();
   const teamStats = new Map();
   const timeSeriesData = new Map();
@@ -109,10 +115,36 @@ export default function AnalyticsPage() {
     ls.total++;
     if (isResolved) ls.resolved++;
 
+    // Waste Type & Segregation Stats
+    const rawWt = r.waste_type || 'Unknown';
+    let wt = rawWt;
+    let seg = 'Unknown';
+    
+    if (rawWt.includes('||')) {
+      const parts = rawWt.split('||');
+      wt = parts[0];
+      seg = parts[1];
+    } else {
+      // Legacy data fallback (simple rule mapping)
+      const wtLower = wt.toLowerCase();
+      if (['plastic', 'metal', 'glass', 'paper', 'cardboard', 'e-waste'].some(x => wtLower.includes(x))) seg = 'Dry Waste';
+      else if (['food', 'vegetable', 'fruit', 'organic'].some(x => wtLower.includes(x))) seg = 'Wet Waste';
+    }
+
     // Waste Type Stats
-    const wt = r.waste_type || 'Unknown';
     if (!wasteStats.has(wt)) wasteStats.set(wt, { name: wt, count: 0 });
     wasteStats.get(wt).count++;
+
+    // Segregation Stats
+    if (seg === 'Manual Verification Required' || seg === 'Unknown' || seg.includes('Manual')) {
+      segregationStats.set('Manual Verification', segregationStats.get('Manual Verification') + 1);
+    } else if (seg === 'Wet Waste') {
+      segregationStats.set('Wet Waste', segregationStats.get('Wet Waste') + 1);
+    } else if (seg === 'Dry Waste') {
+      segregationStats.set('Dry Waste', segregationStats.get('Dry Waste') + 1);
+    } else {
+      segregationStats.set('Unknown', segregationStats.get('Unknown') + 1);
+    }
 
     // Team Stats
     if (r.assigned_team) {
@@ -156,7 +188,11 @@ export default function AnalyticsPage() {
   });
   const timeData = Array.from(timeSeriesData.values()).sort((a, b) => a.date.localeCompare(b.date));
 
-  const COLORS = ['#0ea5e9', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#64748b'];
+    const segregationData = Array.from(segregationStats.entries())
+    .map(([name, value]) => ({ name, value }))
+    .filter(d => d.value > 0);
+  const totalSegregated = segregationData.reduce((acc, curr) => acc + curr.value, 0) || 1;
+const COLORS = ['#0ea5e9', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#64748b'];
 
   if (loading) {
     return (

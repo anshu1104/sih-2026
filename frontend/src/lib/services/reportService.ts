@@ -11,7 +11,9 @@ export const reportService = {
     imageFile: File, 
     detections: any[], 
     priority: string = 'normal',
-    description: string = ''
+    description: string = '',
+    segregation: string = '',
+    verification: string = ''
   ) {
     try {
       // ALWAYS use the securely authenticated user
@@ -42,9 +44,13 @@ export const reportService = {
       const reportIdString = `CV-2026-${Math.floor(100000 + Math.random() * 900000)}`;
       
       // Calculate highest confidence waste type
-      const wasteType = detections.length > 0 
+      let wasteType = detections.length > 0 
         ? detections.sort((a, b) => b.confidence - a.confidence)[0].class_name 
         : 'Unknown';
+        
+      if (segregation && verification) {
+        wasteType = `${wasteType}||${segregation}||${verification}`;
+      }
 
       const { data: reportData, error: reportError } = await supabase
         .from('reports')
@@ -129,7 +135,8 @@ export const reportService = {
       .select(`
         *,
         detections(*),
-        report_media(*)
+        report_media(*),
+        report_status_history(*)
       `)
       .eq('report_id', id)
       .single();

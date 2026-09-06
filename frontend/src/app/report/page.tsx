@@ -150,7 +150,7 @@ export default function ReportWastePage() {
       
       router.push("/report/result");
     } catch (err: any) {
-      console.error(err);
+      console.warn(err);
       alert(err.message || "Failed to connect to the AI service.");
       setIsProcessing(false);
     }

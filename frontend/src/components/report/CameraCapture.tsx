@@ -35,7 +35,7 @@ export default function CameraCapture({ onCapture, onCancel }: CameraCaptureProp
         videoRef.current.srcObject = mediaStream;
       }
     } catch (err: any) {
-      console.error("Camera error:", err);
+      console.warn("Camera error:", err.message);
       setError("Camera permission denied or camera not available. Please allow camera access and try again.");
     } finally {
       setIsInitializing(false);
