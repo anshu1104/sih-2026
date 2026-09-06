@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
-import AuthSidebar from "@/components/AuthSidebar";
+import AuthSidebar from "@/components/layout/AuthSidebar";
 import { Mail, Lock, Eye, EyeOff, Users, Building } from "lucide-react";
 
 export default function LoginPage() {

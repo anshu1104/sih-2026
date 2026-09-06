@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, MapPin, Clock, ArrowUp, ArrowDown } from "lucide-react";
 import Link from "next/link";
-import { reportService } from "@/lib/services/reportService";
+import { reportService } from "@/services/reportService";
 import { supabase } from "@/lib/supabase";
 import dynamic from "next/dynamic";
 

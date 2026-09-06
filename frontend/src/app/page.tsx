@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ShieldCheck, MapPin, Camera, ArrowRight, Leaf } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
 
 export default function LandingPage() {
   const [lang, setLang] = useState<'en' | 'hi'>('en');

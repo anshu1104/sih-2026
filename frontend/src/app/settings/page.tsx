@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { User, Lock, MapPin, Globe, HelpCircle, LogOut, Check, Trash2, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
 
 export default function SettingsPage() {
   const router = useRouter();

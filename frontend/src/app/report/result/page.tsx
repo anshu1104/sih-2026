@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
 import { ArrowLeft, CheckCircle2, MapPin, AlertTriangle } from "lucide-react";
 
 export default function AIResultPage() {
@@ -287,7 +287,7 @@ useEffect(() => {
                     const blob = await response.blob();
                     const file = new File([blob], 'report_image.jpg', { type: 'image/jpeg' });
                     
-                    const { reportService } = await import("@/lib/services/reportService");
+                    const { reportService } = await import("@/services/reportService");
                     
                     const result = await reportService.createReport(
                       userId,

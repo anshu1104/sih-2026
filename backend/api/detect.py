@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from ultralytics import YOLO
-from core.config import settings
+from utils.config import settings
 import time
 import os
 import io

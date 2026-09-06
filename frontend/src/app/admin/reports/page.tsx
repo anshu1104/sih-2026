@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Filter, Search, Eye } from "lucide-react";
-import { reportService } from "@/lib/services/reportService";
+import { reportService } from "@/services/reportService";
 import { supabase } from "@/lib/supabase";
 
 export default function AdminReportsPage() {

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useRef } from "react";
 import { ArrowLeft, CheckCircle2, MapPin, ShieldCheck, X, Clock, Camera, AlertCircle, RefreshCw } from "lucide-react";
-import { reportService } from "@/lib/services/reportService";
+import { reportService } from "@/services/reportService";
 import { supabase } from "@/lib/supabase";
 
 export default function AdminReportDetail() {

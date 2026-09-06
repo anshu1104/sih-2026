@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Search, Eye, Filter } from "lucide-react";
-import { reportService } from "@/lib/services/reportService";
+import { reportService } from "@/services/reportService";
 
 export default function AdminUsersPage() {
   const [users, setUsers] = useState<any[]>([]);

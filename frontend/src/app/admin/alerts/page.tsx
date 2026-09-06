@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Bell, ArrowRight, CheckCircle2, Clock, Check, Trash2, AlertTriangle, XCircle, MapPin } from "lucide-react";
-import { reportService } from "@/lib/services/reportService";
+import { reportService } from "@/services/reportService";
 
 export default function AlertsPage() {
   const [alerts, setAlerts] = useState<any[]>([]);

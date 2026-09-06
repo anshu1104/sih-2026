@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
 import Link from "next/link";
 import { Camera, Search, AlertTriangle, ChevronDown, ChevronUp, MapPin, Mail, Phone, Leaf } from "lucide-react";
 

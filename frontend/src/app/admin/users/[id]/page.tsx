@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Eye } from "lucide-react";
-import { reportService } from "@/lib/services/reportService";
+import { reportService } from "@/services/reportService";
 
 export default function UserDetailsPage() {
   const params = useParams();

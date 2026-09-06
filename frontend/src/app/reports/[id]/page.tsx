@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, CheckCircle2, MapPin, Clock, AlertTriangle, UserCheck, X } from "lucide-react";
-import Header from "@/components/Header";
-import { reportService } from "@/lib/services/reportService";
+import Header from "@/components/layout/Header";
+import { reportService } from "@/services/reportService";
 
 export default function CitizenReportDetail() {
   const params = useParams();

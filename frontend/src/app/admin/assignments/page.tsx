@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Search, Clock } from "lucide-react";
-import { reportService } from "@/lib/services/reportService";
+import { reportService } from "@/services/reportService";
 
 export default function AdminAssignmentsPage() {
   const [reports, setReports] = useState<any[]>([]);

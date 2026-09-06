@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
 import { Camera, MapPin, CheckCircle2 } from "lucide-react";
 import CameraCapture from "@/components/report/CameraCapture";
 import ImageUploader from "@/components/report/ImageUploader";
 import ImagePreview from "@/components/report/ImagePreview";
 import ManualLocationInput, { ManualLocationData } from "@/components/report/ManualLocationInput";
-import { detectLocation, GPSLocation } from "@/components/report/LocationDetector";
+import { detectLocation, GPSLocation } from "@/utils/LocationDetector";
 
 export interface ReportLocation {
   type: "gps" | "manual";

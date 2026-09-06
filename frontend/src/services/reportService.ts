@@ -1,4 +1,4 @@
-import { supabase } from "../supabase";
+import { supabase } from "@/lib/supabase";
 import { ReportLocation } from "@/app/report/page";
 
 // Service to handle Supabase interactions for Reports
